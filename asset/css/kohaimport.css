@@ -1,0 +1,5 @@
+.skipping_mapping {
+    text-decoration-line: line-through;
+    background-color: #eee !important;
+    font-style: italic;
+}

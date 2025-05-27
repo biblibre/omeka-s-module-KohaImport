@@ -1,0 +1,28 @@
+<?php $this->headScript()->appendFile($this->assetUrl('js/map.js', 'KohaImport'));?>
+<?php $this->headLink()->appendStylesheet($this->assetUrl('css/kohaimport.css', 'KohaImport'));?>
+
+<?php echo $this->pageTitle($this->translate('Mappings'), 1, $this->translate('Koha Import')); ?>
+
+<?php $this->trigger('view.index.before'); ?>
+
+<?php $form->prepare(); ?>
+<?php echo $this->form()->openTag($form); ?>
+<fieldset id='page-actions'>
+    <button type="submit"><?php echo $this->translate('Import'); ?></button>
+</fieldset>
+<nav class="section-nav">
+    <ul>
+        <?php foreach ($resourceType as $type) : ?>
+            <li><a id="<?php echo $type;?>" href="#<?php echo $type;?>_config" class="resource_type o-icon-<?php echo $type;?>"><?php echo ' ' . $this->translate(ucfirst(str_replace('-', ' ', $type)))?></a></li>
+        <?php endforeach; ?>
+    </ul>
+</nav>
+
+<?php $this->trigger('view.index.form.before'); ?>
+
+<?php echo $this->formCollection($form); ?>
+<?php $this->trigger('view.index.form.after'); ?>
+
+<?php echo $this->form()->closeTag(); ?>
+
+<?php $this->trigger('view.index.after'); ?>

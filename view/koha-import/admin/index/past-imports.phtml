@@ -1,0 +1,145 @@
+<?php
+$escape = $this->plugin('escapeHtml');
+$translate = $this->plugin('translate');
+?>
+
+<?php echo $this->pageTitle($this->translate('Past imports'), 1, $this->translate('Koha Import')); ?>
+<?php if (empty($imports)): ?>
+    <p><?php echo $escape($translate('None import yet'));?></p>
+<?php else: ?>
+<?php echo $this->pagination(); ?>
+
+    <table class="tablesaw" data-tablesaw-mode="stack">
+        <thead>
+            <tr>
+                <th>
+                    <?php echo $this->sortLink($escape($this->translate('Date')), 'id');?>
+                </th>
+                <th><?php echo $escape($translate('Name'));?></th>
+                <th><?php echo $escape($translate('Item Sets'));?></th>
+                <th><?php echo $escape($translate('Items'));?></th>
+                <th><?php echo $escape($translate('Sites'));?></th>
+                <th><?php echo $escape($translate('Configuration'));?></th>
+                <th><?php echo $escape($translate('Owner'));?></th> 
+                <th><?php echo $escape($translate('Status'));?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($imports as $import): ?>
+                <form method='POST'>
+
+                    <?php $job = $import->job(); ?>
+                    <?php $jobArgs = $job->args(); ?>
+                    <?php $importName = $jobArgs['import_name']; ?>
+                    <?php $itemSetCount = $this->api()->search('koha_import_record', ['limit' => 0, 'import_id' => $import->id(), 'type' => 'item-set'])->getTotalResults(); ?>
+                    <?php $itemCount = $this->api()->search('koha_import_record', ['limit' => 0, 'import_id' => $import->id(), 'type' => 'item'])->getTotalResults(); ?>
+                    <?php $owner = $import->owner(); ?>
+                    <?php $sites = $import->sites();?>
+                    <?php $config = $import->config(); ?>
+
+                    <tr id="import-<?php echo $import->id() ;?>">
+                        <td>
+                            <?php echo $escape($this->i18n()->dateFormat($job->started())); ?>
+                        </td>
+                        <td>
+                            <?php echo $importName;?>
+                        </td>
+                        <td>
+                            <?php if ($itemSetCount > 0) : ?>
+                                <?php echo $itemSetCount; ?>
+                            <?php else: ?>
+                                <p><?php echo $this->translate('None'); ?></p>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php if ($itemCount > 0) : ?>
+                                <?php echo $itemCount; ?>
+                            <?php else: ?>
+                                <p><?php echo $this->translate('None'); ?></p>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <!--todo improve by save to NULL if none site-->
+                            <?php if ($sites): ?>
+                                <ul>
+                                    <?php foreach ($sites as $siteId => $siteSlug): ?>
+                                        <li>
+                                            <?php echo $this->hyperlink(
+                                                $siteSlug,
+                                                $this->url('admin/site/slug', [
+                                                    'controller' => 'site',
+                                                    'action' => 'show',
+                                                    'site-slug' => $siteSlug,
+                                                ])
+                                            ); ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php else: ?>
+                                <p><?php echo $this->translate('None site selected'); ?></p>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php if ($config): ?>
+                                    <?php echo $this->hyperlink(
+                                        '',
+                                        '#',
+                                        [
+                                            'data-sidebar-content-url' => $this->url(
+                                                'admin/koha-import/import/config',
+                                                [
+                                                'controller' => 'Import',
+                                                'action' => 'show',
+                                                ],
+                                                [
+                                                    'query' => [
+                                                        'import_name' => $importName,
+                                                        'details_name' => $this->translate('Configuration'),
+                                                        'import_config' => $config,
+                                                    ],
+                                                ]
+                                            ),
+                                            'class' => 'o-icon-more sidebar-content',
+                                            'title' => $this->translate('Options'),
+                                            'data-sidebar-selector' => '#sidebar',
+                                        ],
+                                    ); ?>
+                            <?php else: ?>
+                                <p><?php echo $this->translate('None options'); ?></p>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php
+                                if ($owner):
+                                    echo $this->hyperlink($owner->getName(), $this->url('admin/id', ['controller' => 'user', 'action' => 'show', 'id' => $owner->getId()]));
+                                endif;
+                            ?>
+                        </td>
+                        <td>
+                            <div>
+                            <?php echo $escape($translate($job->status()));?>
+                            </div>
+                            <span class="koha-import-job-param">
+                                <?php echo $this->hyperlink($this->translate('Job details'), $this->url('admin/id', ['controller' => 'job', 'action' => 'show', 'id' => $job->id()])); ?>
+                            </span>
+                            <?php if ($job->log()): ?>
+                            /
+                            <span class="koha-import-job-log">
+                                <?php echo $this->hyperlink($this->translate('Log'), $this->url('admin/id', ['controller' => 'job', 'action' => 'log', 'id' => $job->id()]), ['target' => '_blank']); ?>
+                            </span>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                </form>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>
+
+<div id="sidebar" class="sidebar">
+    <?php echo $this->hyperlink('', '#', [
+        'class' => 'sidebar-close o-icon-close',
+        'title' => $this->translate('Close'),
+    ]); ?>
+    <div class="sidebar-content"></div>
+</div>

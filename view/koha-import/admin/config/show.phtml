@@ -1,0 +1,44 @@
+<?php
+    $translate = $this->plugin('translate');
+    $title = "$importName - $detailsName";
+?>
+
+<?php echo $this->pageTitle($title); ?>
+<ul>
+    <?php foreach ($config as $resource => $resourceConfig): 
+        $resource = str_replace('-', ' ', $resource); 
+        ?>
+        <li>
+            <strong><?php echo $translate($resource); ?>:</strong>
+            <ul>
+                <?php
+                if (is_array($resourceConfig)):
+                    foreach ($resourceConfig as $key => $value):
+                        if (is_array($value)): ?>
+                            <li>
+                                <strong><?php echo $translate($key); ?>:</strong>
+                                <ul>
+                                    <?php foreach ($value as $subValue): ?>
+                                        <?php if (!empty($subValue)): ?>
+                                            <li>
+                                                <?php echo $translate($subValue); ?>
+                                            </li>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </li>
+                        <?php else: ?>
+                            <?php if (!empty($value)): ?>
+                                <li>
+                                    <?php echo sprintf('%s: %s', $translate($key), $translate($value)); ?>
+                                </li>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    <?php endforeach;
+                elseif (!empty($resourceConfig)):
+                    echo $translate($resourceConfig);
+                endif; ?>
+            </ul>
+        </li>
+    <?php endforeach; ?>
+</ul>

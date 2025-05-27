@@ -1,0 +1,7 @@
+{
+    "require": {
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "aws/aws-sdk-php": "^3.343",
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
