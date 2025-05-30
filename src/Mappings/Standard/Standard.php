@@ -306,7 +306,7 @@ class Standard extends AbstractMapping
         return $v;
     }
 
-    protected function newResourceValue($resource, $omekaProperty, $resourceToLink)
+    public function newResourceValue($resource, $omekaProperty, $resourceToLink)
     {
         $mapTypes = [
             'items' => 'item',

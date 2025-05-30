@@ -373,10 +373,6 @@ class ImportJob extends AbstractJob
                 $fulltext->save($item, $itemAdapter);
             }
         }
-        $em->persist($import);
-        $em->flush();
-
-        $this->detachAllNewEntities($originalIdentityMap);
 
         $logger->info(sprintf('Inserted: %d, Updated: %d, Skipped: %d', $inserted, $updated, $skipped));
 
@@ -401,6 +397,7 @@ class ImportJob extends AbstractJob
                                 $values = $resource->getValues();
                                 try {
                                     $values->add($mappingProfile->newResourceValue($resource, $omekaProperty, $resourceToLink));
+                                    $em->persist($resource);
                                 } catch (\Exception $e) {
                                     $logger->warn($e);
                                 }
@@ -410,6 +407,10 @@ class ImportJob extends AbstractJob
                 }
             }
         }
+        $em->persist($import);
+        $em->flush();
+
+        $this->detachAllNewEntities($originalIdentityMap);
 
         if ($this->shouldStop()) {
             $logger->info('Job stopped');
