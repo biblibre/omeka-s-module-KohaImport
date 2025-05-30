@@ -108,7 +108,23 @@ class Standard extends AbstractMapping
                                 $omekaProperty = array_key_first($mapping[$tag]['literal']);
                                 if (isset($valueSuggestState) && $valueSuggestState == 'active' && isset($valuesArray['3'])) {
                                     foreach ($valuesArray['3'] as $index => $value) {
-                                        $label = isset($valuesArray['a'][$index]) ? trim($valuesArray['a'][$index]) : $value; // Récupérer le label correspondant à l'index
+                                        $label = '';
+                                        if (isset($valuesArray['a'][$index])) {
+                                            $label .= sprintf('%s', $valuesArray['a'][$index]);
+                                        }
+                                        if (isset($valuesArray['b'][$index])) {
+                                            if (!empty($label)) {
+                                                $label .= ', ';
+                                            }
+                                            $label .= sprintf('%s', $valuesArray['b'][$index]);
+                                        }
+                                        if (isset($valuesArray['f'][$index])) {
+                                            if (!empty($label)) {
+                                                $label .= ' ';
+                                            }
+                                            $label .= sprintf('(%s)', $valuesArray['f'][$index]);
+                                        }
+                                        $label = $label ? trim($label) : $value;
                                         if (strlen($value) > 0) {
                                             try {
                                                 $values->add($this->newValueSuggestValue($resource, $omekaProperty, $value, $label));
