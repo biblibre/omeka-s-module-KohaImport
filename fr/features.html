@@ -1,0 +1,164 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fonctionnalités &mdash; Documentation KohaImport </title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d1a510d7"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=e6b791cb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="Configuration" href="configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            KohaImport
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenu</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fonctionnalités</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#start-an-import">Démarrer un import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-by-resource-type">Configuration par type de ressource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#past-imports">Imports passés</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">KohaImport</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Fonctionnalités</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/features.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="features">
+<h1>Fonctionnalités<a class="headerlink" href="#features" title="Lien vers cette rubrique"></a></h1>
+<section id="start-an-import">
+<h2>Démarrer un import<a class="headerlink" href="#start-an-import" title="Lien vers cette rubrique"></a></h2>
+<img alt="_images/KohaImport_config_import.png" src="_images/KohaImport_config_import.png" />
+<p>Dans la première vue, plusieurs options sont disponibles:</p>
+<ul class="simple">
+<li><p>Nom de l’import: utile pour préciser et identifier votre import (peut être dupliqué)</p></li>
+<li><dl class="simple">
+<dt>Source des médias:</dt><dd><ul>
+<li><p>Serveur local est la solution habituelle, spécifier le chemin du dossier local contenant les médias. Si aucun chemin n’est spécifié, le traitement des médias sera ignoré.</p></li>
+<li><p>S3 bucket: vous pouvez choisir cette option si les médias sont stockés à distance dans un bucket, mais n’oubliez pas d’indiquer sa configuration dans le fichier <cite>module.config.php</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Type de ressource à importer (requis)</p></li>
+<li><p>Sites : ajouter les sites pour les ressources à importer.</p></li>
+<li><p>Propriétaire (requis)</p></li>
+<li><p>Depuis: spécifier une date formattée comme ceci “AAAA-mm-jj HH:MM:SS” pour filtrer les ressources.</p></li>
+<li><p>Force : même si la ressource (identifiée par le <cite>biblionumber</cite>) a déjà été importée et que sa date de mise à jour est égale à la date du jour, vous pouvez forcer son import en cochant la case.</p></li>
+<li><p>Supprimer : utiliser pour supprimer une ressource omeka-s si la ressource koha correspondante n’est plus à exporter.</p></li>
+</ul>
+</section>
+<section id="configuration-by-resource-type">
+<h2>Configuration par type de ressource<a class="headerlink" href="#configuration-by-resource-type" title="Lien vers cette rubrique"></a></h2>
+<p>Après l’initialisation d’un nouvel import, vous pouvez définir des paramètres spécifiques pour chaque type de ressource. Les configurations s’appliquent sur le type de resource actif via l’onglet. Vous trouverez donc des paramètres communs:</p>
+<ul class="simple">
+<li><p>Correspondance champ/valeur selon le type de ressource: vous pouvez filtrer les ressources, pour transformer « uniquement » les ressources correspondantes, s’applique sur le format “champ$sous-champ” avec la valeur strictement égale à l’entrée suivante.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A noter que ces champs sont obligatoires si vous avez sélectionner plusieurs types de ressources Dans le cas contraire si aucun paramètre n’est renseigné, toutes les notices passant dans l’import seront transformées en ressources OmekaS en rapport avec le type de ressource précisé.</p>
+</div>
+<ul class="simple">
+<li><p>Sélectionner un profil d’import: les profiles d’import sont utilisés pour appliquer des correspondances entre les champs Koha et des propriétés OmekaS. Vous pouvez donc personnalisé les correspondances selon les types de ressource.</p></li>
+<li><p>Classes et modèles de ressources: peuvent être définis indépendamment selon le type de ressource.</p></li>
+<li><p>Visibilité de la ressource (requis)</p></li>
+<li><p>Ajouter aux collections: seulement pour les ressources de type “contenu”.</p></li>
+</ul>
+<img alt="_images/KohaImport_config_resource_type_1.png" src="_images/KohaImport_config_resource_type_1.png" />
+<img alt="_images/KohaImport_config_resource_type_2.png" src="_images/KohaImport_config_resource_type_2.png" />
+<img alt="_images/KohaImport_config_resource_type_3.png" src="_images/KohaImport_config_resource_type_3.png" />
+</section>
+<section id="past-imports">
+<h2>Imports passés<a class="headerlink" href="#past-imports" title="Lien vers cette rubrique"></a></h2>
+<p>Résumé des imports passés sur une page dédiée.</p>
+<p>(Admin &gt; KohaImport &gt; Imports passés)</p>
+<img alt="_images/KohaImport_past_imports.png" src="_images/KohaImport_past_imports.png" />
+<p>Et vous avez la possibilité de voir un rappel de la configuration appliquée en cliquant sur <cite>…</cite>.</p>
+<img alt="_images/KohaImport_past_imports_sidebar.png" src="_images/KohaImport_past_imports_sidebar.png" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="configuration.html" class="btn btn-neutral float-left" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2025, BibLibre.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

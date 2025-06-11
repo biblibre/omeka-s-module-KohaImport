@@ -1,0 +1,165 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features &mdash; KohaImport  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Configuration" href="configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            KohaImport
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#start-an-import">Start an import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-by-resource-type">Configuration by resource type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#past-imports">Past imports</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">KohaImport</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Features</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/features.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="features">
+<h1>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h1>
+<section id="start-an-import">
+<h2>Start an import<a class="headerlink" href="#start-an-import" title="Link to this heading"></a></h2>
+<img alt="_images/KohaImport_config_import.png" src="_images/KohaImport_config_import.png" />
+<p>In the first view, several options are available:</p>
+<ul class="simple">
+<li><p>Import name: just to specify and easily identify your import (can be duplicated)</p></li>
+<li><dl class="simple">
+<dt>Media ingest file:</dt><dd><ul>
+<li><p>Local server as for the usual workflow, specify the path to the folder where your media is stored. If no path is specified, media ingestion will be ignored.</p></li>
+<li><p>S3 bucket: you can choose this option if the media is stored remotely on a bucket, but don’t forget to add your configuration in the <cite>module.config.php</cite> file.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Type of resource to import (required).</p></li>
+<li><p>Sites: add the sites for the resources to be imported.</p></li>
+<li><p>Owner (required)</p></li>
+<li><p>Since: specified date formatted as “YYYY-mm-dd HH:MM:SS” to filter resources.</p></li>
+<li><p>Force: even if the resource (identified by the <cite>biblionumber</cite>) has already been imported and its update date is equal to today’s date, you can force the import by checking this box.</p></li>
+<li><p>Delete: used to delete an omeka-s resource if the corresponding resource in koha is no longer to be exported.</p></li>
+</ul>
+</section>
+<section id="configuration-by-resource-type">
+<h2>Configuration by resource type<a class="headerlink" href="#configuration-by-resource-type" title="Link to this heading"></a></h2>
+<p>After initiating the configuration of a new import, you can then define parameters specific to each type of resource.
+Configurations differ according to the resource type tab you are in.
+You will therefore find some common parameters:</p>
+<ul class="simple">
+<li><p>Mapped field/value with resource type: you’ll be able to filter resources, to transform “only” the corresponding resources, apply to the data field on the “field$subfield” format with a value strictly equal to the entry below.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that these fields are mandatory if you have selected more than one type of resource to import. Otherwise, if these parameters are not filled in, all records passing through the import will be transformed into OmekaS resources of the specified type.</p>
+</div>
+<ul class="simple">
+<li><p>Select an import profile: import profiles are used to apply mappings between Koha fields and OmekaS properties. You can therefore customize the mapping according to the type of resource.</p></li>
+<li><p>Classes and resource templates: choose different parameters for different resource types.</p></li>
+<li><p>Resource visibility (required)</p></li>
+<li><p>Add to item sets: only for ‘item’ resources.</p></li>
+</ul>
+<img alt="_images/KohaImport_config_resource_type_1.png" src="_images/KohaImport_config_resource_type_1.png" />
+<img alt="_images/KohaImport_config_resource_type_2.png" src="_images/KohaImport_config_resource_type_2.png" />
+<img alt="_images/KohaImport_config_resource_type_3.png" src="_images/KohaImport_config_resource_type_3.png" />
+</section>
+<section id="past-imports">
+<h2>Past imports<a class="headerlink" href="#past-imports" title="Link to this heading"></a></h2>
+<p>Resume past imports on a dedicated page.</p>
+<p>(Admin &gt; KohaImport &gt; Past imports)</p>
+<img alt="_images/KohaImport_past_imports.png" src="_images/KohaImport_past_imports.png" />
+<p>And you’ve got also possibility to view the configuration applied by clicking on <cite>…</cite>.</p>
+<img alt="_images/KohaImport_past_imports_sidebar.png" src="_images/KohaImport_past_imports_sidebar.png" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="configuration.html" class="btn btn-neutral float-left" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BibLibre.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
