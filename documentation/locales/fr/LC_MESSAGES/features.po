@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, BibLibre
+# This file is distributed under the same license as the KohaImport package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: KohaImport \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-11 12:03+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../features.rst:2
+msgid "Features"
+msgstr "Fonctionnalités"
+
+#: ../../features.rst:5
+msgid "Start an import"
+msgstr "Démarrer un import"
+
+#: ../../features.rst:8
+msgid "In the first view, several options are available:"
+msgstr "Dans la première vue, plusieurs options sont disponibles:"
+
+#: ../../features.rst:10
+msgid ""
+"Import name: just to specify and easily identify your import (can be "
+"duplicated)"
+msgstr ""
+"Nom de l'import: utile pour préciser et identifier votre import (peut "
+"être dupliqué)"
+
+#: ../../features.rst:11
+msgid "Media ingest file:"
+msgstr "Source des médias:"
+
+#: ../../features.rst:12
+msgid ""
+"Local server as for the usual workflow, specify the path to the folder "
+"where your media is stored. If no path is specified, media ingestion will"
+" be ignored."
+msgstr ""
+"Serveur local est la solution habituelle, spécifier le chemin du dossier "
+"local contenant les médias. Si aucun chemin n'est spécifié, le traitement"
+" des médias sera ignoré."
+
+#: ../../features.rst:13
+msgid ""
+"S3 bucket: you can choose this option if the media is stored remotely on "
+"a bucket, but don't forget to add your configuration in the "
+"`module.config.php` file."
+msgstr ""
+"S3 bucket: vous pouvez choisir cette option si les médias sont stockés à "
+"distance dans un bucket, mais n'oubliez pas d'indiquer sa configuration "
+"dans le fichier `module.config.php`."
+
+#: ../../features.rst:14
+msgid "Type of resource to import (required)."
+msgstr "Type de ressource à importer (requis)"
+
+#: ../../features.rst:15
+msgid "Sites: add the sites for the resources to be imported."
+msgstr "Sites : ajouter les sites pour les ressources à importer."
+
+#: ../../features.rst:16
+msgid "Owner (required)"
+msgstr "Propriétaire (requis)"
+
+#: ../../features.rst:17
+msgid ""
+"Since: specified date formatted as “YYYY-mm-dd HH:MM:SS” to filter "
+"resources."
+msgstr ""
+"Depuis: spécifier une date formattée comme ceci “AAAA-mm-jj HH:MM:SS” "
+"pour filtrer les ressources."
+
+#: ../../features.rst:18
+msgid ""
+"Force: even if the resource (identified by the `biblionumber`) has "
+"already been imported and its update date is equal to today's date, you "
+"can force the import by checking this box."
+msgstr ""
+"Force : même si la ressource (identifiée par le `biblionumber`) a déjà "
+"été importée et que sa date de mise à jour est égale à la date du jour, "
+"vous pouvez forcer son import en cochant la case."
+
+#: ../../features.rst:19
+msgid ""
+"Delete: used to delete an omeka-s resource if the corresponding resource "
+"in koha is no longer to be exported."
+msgstr ""
+"Supprimer : utiliser pour supprimer une ressource omeka-s si la ressource"
+" koha correspondante n'est plus à exporter."
+
+#: ../../features.rst:22
+msgid "Configuration by resource type"
+msgstr "Configuration par type de ressource"
+
+#: ../../features.rst:24
+msgid ""
+"After initiating the configuration of a new import, you can then define "
+"parameters specific to each type of resource. Configurations differ "
+"according to the resource type tab you are in. You will therefore find "
+"some common parameters:"
+msgstr ""
+"Après l'initialisation d'un nouvel import, vous pouvez définir des "
+"paramètres spécifiques pour chaque type de ressource. Les configurations "
+"s'appliquent sur le type de resource actif via l'onglet. Vous trouverez "
+"donc des paramètres communs:"
+
+#: ../../features.rst:28
+msgid ""
+"Mapped field/value with resource type: you'll be able to filter "
+"resources, to transform “only” the corresponding resources, apply to the "
+"data field on the “field$subfield” format with a value strictly equal to "
+"the entry below."
+msgstr ""
+"Correspondance champ/valeur selon le type de ressource: vous pouvez "
+"filtrer les ressources, pour transformer \"uniquement\" les ressources "
+"correspondantes, s'applique sur le format “champ$sous-champ” avec la "
+"valeur strictement égale à l'entrée suivante."
+
+#: ../../features.rst:31
+msgid ""
+"Note that these fields are mandatory if you have selected more than one "
+"type of resource to import. Otherwise, if these parameters are not filled"
+" in, all records passing through the import will be transformed into "
+"OmekaS resources of the specified type."
+msgstr ""
+"A noter que ces champs sont obligatoires si vous avez sélectionner "
+"plusieurs types de ressources Dans le cas contraire si aucun paramètre "
+"n'est renseigné, toutes les notices passant dans l'import seront "
+"transformées en ressources OmekaS en rapport avec le type de ressource "
+"précisé."
+
+#: ../../features.rst:33
+msgid ""
+"Select an import profile: import profiles are used to apply mappings "
+"between Koha fields and OmekaS properties. You can therefore customize "
+"the mapping according to the type of resource."
+msgstr ""
+"Sélectionner un profil d'import: les profiles d'import sont utilisés pour"
+" appliquer des correspondances entre les champs Koha et des propriétés "
+"OmekaS. Vous pouvez donc personnalisé les correspondances selon les types"
+" de ressource."
+
+#: ../../features.rst:35
+msgid ""
+"Classes and resource templates: choose different parameters for different"
+" resource types."
+msgstr ""
+"Classes et modèles de ressources: peuvent être définis indépendamment "
+"selon le type de ressource."
+
+#: ../../features.rst:37
+msgid "Resource visibility (required)"
+msgstr "Visibilité de la ressource (requis)"
+
+#: ../../features.rst:39
+msgid "Add to item sets: only for 'item' resources."
+msgstr "Ajouter aux collections: seulement pour les ressources de type 'contenu'."
+
+#: ../../features.rst:49
+msgid "Past imports"
+msgstr "Imports passés"
+
+#: ../../features.rst:50
+msgid "Resume past imports on a dedicated page."
+msgstr "Résumé des imports passés sur une page dédiée."
+
+#: ../../features.rst:52
+msgid "(Admin > KohaImport > Past imports)"
+msgstr "(Admin > KohaImport > Imports passés)"
+
+#: ../../features.rst:56
+msgid ""
+"And you've got also possibility to view the configuration applied by "
+"clicking on `...`."
+msgstr ""
+"Et vous avez la possibilité de voir un rappel de la configuration "
+"appliquée en cliquant sur `...`."
+

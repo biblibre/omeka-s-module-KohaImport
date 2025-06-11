@@ -1,0 +1,45 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, BibLibre
+# This file is distributed under the same license as the KohaImport package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: KohaImport \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-11 11:33+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../configuration.rst:2
+msgid "Configuration"
+msgstr ""
+
+#: ../../configuration.rst:5
+msgid "Add koha credentials"
+msgstr ""
+
+#: ../../configuration.rst:7
+msgid "On `module.config.php` file add yours credentials to allow module to access to Koha API (plugin OmekaExport needed):"
+msgstr ""
+
+#: ../../configuration.rst:18
+msgid "Add your custom mapping"
+msgstr ""
+
+#: ../../configuration.rst:20
+msgid "To add your own custom mapping add it on `module.config.php` file like:"
+msgstr ""
+
+#: ../../configuration.rst:31
+msgid "Add S3 bucket as medias storage"
+msgstr ""
+
+#: ../../configuration.rst:33
+msgid "Add it on `module.config.php` file:"
+msgstr ""

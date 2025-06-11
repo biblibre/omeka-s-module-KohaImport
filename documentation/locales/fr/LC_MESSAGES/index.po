@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, BibLibre
+# This file is distributed under the same license as the KohaImport package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: KohaImport \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-11 11:33+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../index.rst:25
+msgid "Contents"
+msgstr "Contenu"
+
+#: ../../index.rst:2
+msgid "Introduction"
+msgstr "Introduction"
+
+#: ../../index.rst:5
+msgid "How does it work ?"
+msgstr "Comment cela fonctionne ?"
+
+#: ../../index.rst:7
+msgid "This Omeka S module allows to import bibliographic records from Koha."
+msgstr "Ce module Omeka S vous permet d'importer des notices bibliographiques depuis Koha."
+
+#: ../../index.rst:10
+msgid "Requirements"
+msgstr "Prérequis"
+
+#: ../../index.rst:12
+msgid ""
+"`Koha plugin OmekaExport <https://git.biblibre.com/biblibre/koha-plugin-"
+"OmekaExport>`_ must be installed and enabled."
+msgstr ""
+"`Le plugin Koha OmekaExport <https://git.biblibre.com/biblibre/koha-plugin-"
+"OmekaExport>`_ doit être installé et actif."
+
+#: ../../index.rst:14
+msgid ""
+"Koha REST API and its \"client credentials\" authentication method "
+"(system preference: RESTOAuth2ClientCredentials) must be enabled."
+msgstr ""
+"L'API REST Koha et son accès par la méthode d'authentification ' \"client credentials\" "
+"(préférence système: RESTOAuth2ClientCredentials) doit être actif."
+
+#: ../../index.rst:16
+msgid ""
+"`Koha custom vocabulary <https://git.biblibre.com/omeka-s/custom-"
+"vocabularies/src/branch/master/vocabularies/koha.ttl>`_ must be "
+"installed."
+msgstr ""
+"`Le vocabulaire personnalisé Koha <https://git.biblibre.com/omeka-s/custom-"
+"vocabularies/src/branch/master/vocabularies/koha.ttl>`_ doit être installé."
+
+#: ../../index.rst:21
+msgid "Where is the configuration"
+msgstr "Où est la configuration"
+
+#: ../../index.rst:23
+msgid ""
+"Actually `Standard` mapping is include in this module but you can add "
+"your own custom mapping on `module.config.php` file. (Also see "
+":doc:`configuration`)"
+msgstr ""
+"Actuellement le profil de correspondances `Standard` est inclus dans le module"
+" mais vous pouvez ajouter un profil de correspondances personnalisé dans le fichier `module.config.php` file."
+" (Voir aussi :doc:`configuration`)"
+

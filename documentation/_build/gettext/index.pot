@@ -1,0 +1,57 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025, BibLibre
+# This file is distributed under the same license as the KohaImport package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: KohaImport \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-11 11:33+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index.rst:25
+msgid "Contents"
+msgstr ""
+
+#: ../../index.rst:2
+msgid "Introduction"
+msgstr ""
+
+#: ../../index.rst:5
+msgid "How does it work ?"
+msgstr ""
+
+#: ../../index.rst:7
+msgid "This Omeka S module allows to import bibliographic records from Koha."
+msgstr ""
+
+#: ../../index.rst:10
+msgid "Requirements"
+msgstr ""
+
+#: ../../index.rst:12
+msgid "`Koha plugin OmekaExport <https://git.biblibre.com/biblibre/koha-plugin-OmekaExport>`_ must be installed and enabled."
+msgstr ""
+
+#: ../../index.rst:14
+msgid "Koha REST API and its \"client credentials\" authentication method (system preference: RESTOAuth2ClientCredentials) must be enabled."
+msgstr ""
+
+#: ../../index.rst:16
+msgid "`Koha custom vocabulary <https://git.biblibre.com/omeka-s/custom-vocabularies/src/branch/master/vocabularies/koha.ttl>`_ must be installed."
+msgstr ""
+
+#: ../../index.rst:21
+msgid "Where is the configuration"
+msgstr ""
+
+#: ../../index.rst:23
+msgid "Actually `Standard` mapping is include in this module but you can add your own custom mapping on `module.config.php` file. (Also see :doc:`configuration`)"
+msgstr ""
