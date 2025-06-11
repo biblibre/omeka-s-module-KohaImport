@@ -451,7 +451,7 @@ class ImportJob extends AbstractJob
                 continue;
             }
 
-            $resource->getResource();
+            $record->getResource();
             $resourceTitle = $resource->getTitle();
             $resourceId = $resource->getId();
 
