@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-22 15:38+0200\n"
+"POT-Creation-Date: 2025-06-11 14:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,41 +17,139 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: view/orleans-koha-import/admin/index/index.phtml:1
+#: view/koha-import/admin/index/config.phtml:3
 msgid "Import from Koha"
 msgstr ""
 
-#: view/orleans-koha-import/admin/index/index.phtml:13
-msgid "Start import"
+#: view/koha-import/admin/index/map.phtml:4
+msgid "Mappings"
 msgstr ""
 
-#: src/Form/ImportForm.php:17
+#: view/koha-import/admin/index/map.phtml:4
+#: view/koha-import/admin/index/past-imports.phtml:6
+msgid "Koha Import"
+msgstr ""
+
+#: view/koha-import/admin/index/past-imports.phtml:6
+msgid "Past imports"
+msgstr ""
+
+#: view/koha-import/admin/index/past-imports.phtml:8
+msgid "None import yet"
+msgstr ""
+
+#: view/koha-import/admin/index/past-imports.phtml:22
+#: view/koha-import/admin/index/past-imports.phtml:97
+msgid "Configuration"
+msgstr ""
+
+#: view/koha-import/admin/index/past-imports.phtml:79
+msgid "None site selected"
+msgstr ""
+
+#: view/koha-import/admin/index/past-imports.phtml:108
+msgid "None options"
+msgstr ""
+
+#: view/koha-import/admin/index/past-imports.phtml:123
+msgid "Job details"
+msgstr ""
+
+#: src/Controller/Admin/IndexController.php:29
+msgid ""
+"KohaImport module is not correctly configured. Please read the README.md "
+"file provided with the module."
+msgstr ""
+
+#: src/Controller/Admin/IndexController.php:76
+#, php-format
+msgid "Importing in background (%sjob #%d%s)"
+msgstr ""
+
+#: src/Form/ConfigForm.php:19
+msgid "Import name"
+msgstr ""
+
+#: src/Form/ConfigForm.php:31
+msgid "Medias source"
+msgstr ""
+
+#: src/Form/ConfigForm.php:32
+msgid "Choose between local or S3 bucket server"
+msgstr ""
+
+#: src/Form/ConfigForm.php:34
+msgid "Local server"
+msgstr ""
+
+#: src/Form/ConfigForm.php:35
+msgid "Bucket S3"
+msgstr ""
+
+#: src/Form/ConfigForm.php:47
+msgid "Medias path"
+msgstr ""
+
+#: src/Form/ConfigForm.php:48
+msgid "Only used for local server option"
+msgstr ""
+
+#: src/Form/ConfigForm.php:59
+msgid "Select resource type to import"
+msgstr ""
+
+#: src/Form/ConfigForm.php:77
+msgid "Sites for resources"
+msgstr ""
+
+#: src/Form/ConfigForm.php:88
+msgid "Select owner"
+msgstr ""
+
+#: src/Form/ConfigForm.php:105
 msgid "Since"
 msgstr ""
 
-#: src/Form/ImportForm.php:18
+#: src/Form/ConfigForm.php:106
 msgid "Should be a datetime formatted like this: YYYY-mm-dd HH:MM:SS"
 msgstr ""
 
-#: src/Form/ImportForm.php:29
+#: src/Form/ConfigForm.php:118
 msgid "Force"
 msgstr ""
 
-#: src/Form/ImportForm.php:30
-msgid "Force update even when it seems the item is already up-to-date"
+#: src/Form/ConfigForm.php:119
+msgid "Force update even when it seems the resource is already up-to-date"
 msgstr ""
 
-#: src/Form/ImportForm.php:42
-msgid "Delete Omeka S items that are not exported by Koha anymore"
+#: src/Form/ConfigForm.php:132
+msgid "Delete Omeka S resources that are not exported by Koha anymore"
 msgstr ""
 
-#: src/Controller/Admin/IndexController.php:46
-#, php-format
-msgid "Import started in %sjob %s%s"
+#: src/Form/Element/ItemFieldset.php:19 src/Form/Element/ItemSetFieldset.php:19
+msgid "Mapped field with resource type"
 msgstr ""
 
-#: src/Controller/Admin/IndexController.php:63
-msgid ""
-"KohaImport module is not correctly configured. Please read the README."
-"md file provided with the module."
+#: src/Form/Element/ItemFieldset.php:20 src/Form/Element/ItemSetFieldset.php:20
+msgid "e.g. \"214$a\""
+msgstr ""
+
+#: src/Form/Element/ItemFieldset.php:31 src/Form/Element/ItemSetFieldset.php:31
+msgid "Mapped value with resource type"
+msgstr ""
+
+#: src/Form/Element/ItemFieldset.php:32 src/Form/Element/ItemSetFieldset.php:32
+msgid "e.g. \"foo\""
+msgstr ""
+
+#: src/Form/Element/ItemFieldset.php:43 src/Form/Element/ItemSetFieldset.php:43
+msgid "Select an import profile"
+msgstr ""
+
+#: src/Form/Element/ItemFieldset.php:76 src/Form/Element/ItemSetFieldset.php:76
+msgid "Select resource template…"
+msgstr ""
+
+#: src/Form/Element/ItemFieldset.php:99 src/Form/Element/ItemSetFieldset.php:85
+msgid "Resource visibility"
 msgstr ""

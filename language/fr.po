@@ -1,13 +1,13 @@
 # French translations for PACKAGE package.
-# Copyright (C) 2024 THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2025 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2024.
+# Automatically generated, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-22 15:38+0200\n"
+"POT-Creation-Date: 2025-06-11 14:27+0200\n"
 "PO-Revision-Date: 2024-04-22 15:38+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,41 +17,141 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: view/orleans-koha-import/admin/index/index.phtml:1
+#: view/koha-import/admin/index/config.phtml:3
 msgid "Import from Koha"
 msgstr "Importer depuis Koha"
 
-#: view/orleans-koha-import/admin/index/index.phtml:13
-msgid "Start import"
-msgstr "Démarrer l'import"
+#: view/koha-import/admin/index/map.phtml:4
+msgid "Mappings"
+msgstr "Correspondances"
 
-#: src/Form/ImportForm.php:17
+#: view/koha-import/admin/index/map.phtml:4
+#: view/koha-import/admin/index/past-imports.phtml:6
+msgid "Koha Import"
+msgstr "Koha Import"
+
+#: view/koha-import/admin/index/past-imports.phtml:6
+msgid "Past imports"
+msgstr "Imports passés"
+
+#: view/koha-import/admin/index/past-imports.phtml:8
+msgid "None import yet"
+msgstr "Aucun import"
+
+#: view/koha-import/admin/index/past-imports.phtml:22
+#: view/koha-import/admin/index/past-imports.phtml:97
+msgid "Configuration"
+msgstr "Configuration"
+
+#: view/koha-import/admin/index/past-imports.phtml:79
+msgid "None site selected"
+msgstr "Aucun site sélectionné"
+
+#: view/koha-import/admin/index/past-imports.phtml:108
+msgid "None options"
+msgstr "Aucune options"
+
+#: view/koha-import/admin/index/past-imports.phtml:123
+msgid "Job details"
+msgstr "Détails de la tâche"
+
+#: src/Controller/Admin/IndexController.php:29
+msgid ""
+"KohaImport module is not correctly configured. Please read the README.md "
+"file provided with the module."
+msgstr ""
+"Le module KohaImport n'est pas correctement configuré. Lisez le README.md "
+"fourni dans les sources."
+
+#: src/Controller/Admin/IndexController.php:76
+#, php-format
+msgid "Importing in background (%sjob #%d%s)"
+msgstr "Import en tâche de fond (%sjob #%d%s)"
+
+#: src/Form/ConfigForm.php:19
+msgid "Import name"
+msgstr "Nom de l'import"
+
+#: src/Form/ConfigForm.php:31
+msgid "Medias source"
+msgstr "Source des médias"
+
+#: src/Form/ConfigForm.php:32
+msgid "Choose between local or S3 bucket server"
+msgstr "Choisissez entre un serveur local et un bucket S3"
+
+#: src/Form/ConfigForm.php:34
+msgid "Local server"
+msgstr "Serveur local"
+
+#: src/Form/ConfigForm.php:35
+msgid "Bucket S3"
+msgstr "Bucket S3"
+
+#: src/Form/ConfigForm.php:47
+msgid "Medias path"
+msgstr "Chemin des médias"
+
+#: src/Form/ConfigForm.php:48
+msgid "Only used for local server option"
+msgstr "Utilisé uniquement dans le cas d'un serveur local"
+
+#: src/Form/ConfigForm.php:59
+msgid "Select resource type to import"
+msgstr "Sélectionner le type de ressource à importer"
+
+#: src/Form/ConfigForm.php:77
+msgid "Sites for resources"
+msgstr "Site(s) pour les ressources"
+
+#: src/Form/ConfigForm.php:88
+msgid "Select owner"
+msgstr "Sélectionner le propriétaire"
+
+#: src/Form/ConfigForm.php:105
 msgid "Since"
 msgstr "Depuis"
 
-#: src/Form/ImportForm.php:18
+#: src/Form/ConfigForm.php:106
 msgid "Should be a datetime formatted like this: YYYY-mm-dd HH:MM:SS"
 msgstr "Doit être une date formattée comme ceci: AAAA-mm-jj HH:MM:SS"
 
-#: src/Form/ImportForm.php:29
+#: src/Form/ConfigForm.php:118
 msgid "Force"
 msgstr "Forcer"
 
-#: src/Form/ImportForm.php:30
-msgid "Force update even when it seems the item is already up-to-date"
-msgstr "Force la mise à jour même s'il semblerait que le contenu soit déjà à jour"
+#: src/Form/ConfigForm.php:119
+msgid "Force update even when it seems the resource is already up-to-date"
+msgstr "Forcer la mise à jour même si la ressource semble déjà être à jour"
 
-#: src/Form/ImportForm.php:42
-msgid "Delete Omeka S items that are not exported by Koha anymore"
-msgstr "Supprimer les contenus Omeka S qui ne sont plus exportés par Koha"
+#: src/Form/ConfigForm.php:132
+msgid "Delete Omeka S resources that are not exported by Koha anymore"
+msgstr "Supprimer les ressources Omeka S qui ne sont plus exportées par Koha"
 
-#: src/Controller/Admin/IndexController.php:46
-#, php-format
-msgid "Import started in %sjob %s%s"
-msgstr "Import a démarré dans la %stâche %s%s "
+#: src/Form/Element/ItemFieldset.php:19 src/Form/Element/ItemSetFieldset.php:19
+msgid "Mapped field with resource type"
+msgstr "Champ défini pour le type de resource"
 
-#: src/Controller/Admin/IndexController.php:63
-msgid ""
-"KohaImport module is not correctly configured. Please read the README."
-"md file provided with the module."
-msgstr "KohaImport n'est pas correctement configuré. Lisez le fichier README.md dans les sources du module."
+#: src/Form/Element/ItemFieldset.php:20 src/Form/Element/ItemSetFieldset.php:20
+msgid "e.g. \"214$a\""
+msgstr "ex. \"214$a\""
+
+#: src/Form/Element/ItemFieldset.php:31 src/Form/Element/ItemSetFieldset.php:31
+msgid "Mapped value with resource type"
+msgstr "Valeur définie pour le type de resource"
+
+#: src/Form/Element/ItemFieldset.php:32 src/Form/Element/ItemSetFieldset.php:32
+msgid "e.g. \"foo\""
+msgstr "ex. \"foo\""
+
+#: src/Form/Element/ItemFieldset.php:43 src/Form/Element/ItemSetFieldset.php:43
+msgid "Select an import profile"
+msgstr "Sélectionner un profil d'import"
+
+#: src/Form/Element/ItemFieldset.php:76 src/Form/Element/ItemSetFieldset.php:76
+msgid "Select resource template…"
+msgstr "Sélectionner un modèle de ressource…"
+
+#: src/Form/Element/ItemFieldset.php:99 src/Form/Element/ItemSetFieldset.php:85
+msgid "Resource visibility"
+msgstr "Visibilité de la ressource"

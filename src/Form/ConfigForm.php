@@ -28,7 +28,7 @@ class ConfigForm extends Form
             'name' => 'medias_ingester',
             'type' => LaminasElement\Radio::class,
             'options' => [
-                'label' => 'Media file ingester', // @translate
+                'label' => 'Medias source', // @translate
                 'info' => 'Choose between local or S3 bucket server', // @translate
                 'value_options' => [
                     'local' => 'Local server', // @translate
@@ -45,6 +45,7 @@ class ConfigForm extends Form
             'type' => LaminasElement\Text::class,
             'options' => [
                 'label' => 'Medias path', //@translate
+                'info' => 'Only used for local server option', // @translate
             ],
             'attributes' => [
                 'id' => 'koha-import-medias-path',
@@ -115,7 +116,7 @@ class ConfigForm extends Form
             ],
             'options' => [
                 'label' => 'Force', // @translate
-                'info' => 'Force update even when it seems the item is already up-to-date', // @translate
+                'info' => 'Force update even when it seems the resource is already up-to-date', // @translate
             ],
         ]);
 
@@ -128,7 +129,7 @@ class ConfigForm extends Form
             ],
             'options' => [
                 'label' => 'Delete', // @translate
-                'info' => 'Delete Omeka S items that are not exported by Koha anymore', // @translate
+                'info' => 'Delete Omeka S resources that are not exported by Koha anymore', // @translate
             ],
         ]);
 
