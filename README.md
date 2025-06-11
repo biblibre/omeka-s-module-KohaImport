@@ -2,6 +2,8 @@
 
 This Omeka S module allows to import bibliographic records from Koha.
 
+The complete documentation of KohaImport can be found [here](https://biblibre.github.io/omeka-s-module-KohaImport/).
+
 ## Requirements
 
 * PHP >= 8.1
