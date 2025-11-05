@@ -264,9 +264,6 @@ class Standard extends AbstractMapping
         $v->setProperty($this->getProperty($term));
         $v->setType('literal');
         $v->setValue($value);
-        if ($term == 'koha:biblionumber') {
-            $v->setIsPublic(false);
-        }
 
         return $v;
     }
