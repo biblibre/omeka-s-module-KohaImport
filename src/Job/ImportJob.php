@@ -25,6 +25,7 @@ class ImportJob extends AbstractJob
     protected $properties;
     protected $clientId;
     protected $clientSecret;
+    protected $userAgent;
 
     public function perform()
     {
@@ -105,6 +106,7 @@ class ImportJob extends AbstractJob
 
         $logger->info('Job started');
 
+        $this->userAgent = $config['koha-import']['user-agent'];
         $url = rtrim($config['koha-import']['url'], '/');
         $client_id = $config['koha-import']['client_id'];
         $client_secret = $config['koha-import']['client_secret'];
@@ -489,6 +491,7 @@ class ImportJob extends AbstractJob
         $request->setUri("$url/api/v1/contrib/omekaexport/biblios");
         $request->getHeaders()->addHeaders([
             'Authorization' => "Bearer $accessToken",
+            'User-Agent' => $this->userAgent,
         ]);
         $query = $request->getQuery();
         if ($include_record) {
@@ -505,9 +508,7 @@ class ImportJob extends AbstractJob
         if ($response->getStatusCode() === 401) {
             $newAccessToken = $this->getAccessToken($url);
 
-            $request->getHeaders()->addHeaders([
-            'Authorization' => "Bearer $newAccessToken",
-        ]);
+            $request->getHeaders()->get('Authorization')->setFieldValue("Bearer $newAccessToken");
             $response = $httpClient->send($request);
         }
         if (!$response->isSuccess()) {
@@ -538,6 +539,7 @@ class ImportJob extends AbstractJob
         $request->setUri("$url/api/v1/oauth/token");
         $request->getHeaders()->addHeaders([
             'Content-Type' => 'application/x-www-form-urlencoded',
+            'User-Agent' => $this->userAgent,
         ]);
         $request->getPost()
             ->set('grant_type', 'client_credentials')

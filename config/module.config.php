@@ -152,6 +152,7 @@ return [
         ],
     ],
     'koha-import' => [
+        'user-agent' => '',
         'url' => '',
         'client_id' => '',
         'client_secret' => '',
