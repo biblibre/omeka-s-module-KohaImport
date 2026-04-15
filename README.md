@@ -22,12 +22,15 @@ The complete documentation of KohaImport can be found [here](https://biblibre.gi
     ``` php
     return [
         'koha-import' => [
+          'user-agent' => '',
           'url' => '',
           'client_id' => '',
           'client_secret' => '',
       ],
     ];
     ```
+_Note_ : user agent is used if you need to identify the client in HTTP request or authorized access.
+
 3. To generate `client_id` and `client_secret`, see [Koha documentation](https://koha-community.org/manual/latest/en/html/webservices.html#api-key-management-interface-for-patrons)
 4. Use the module
 
