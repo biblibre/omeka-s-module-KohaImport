@@ -1,0 +1,114 @@
+name: security
+
+# Install into .gitea/workflows/security.yml of the MODULE repository.
+# This file is all the module gets: no config, no rules, no script. Everything
+# else lives in omeka-s-audit, which this job clones at run time.
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  schedule:
+    - cron: '@weekly'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write   # drop this line to disable issue creation entirely
+
+env:
+  AUDIT_REPO: "https://git.biblibre.com/omeka-s/omeka-s-audit.git"
+
+  # Build failure threshold.
+  #   security  composer advisories, taint analysis, opengrep error
+  #   any       the above plus opengrep warning
+  #   never     never fails, for a progressive rollout
+  FAIL_ON: "security"
+
+  # Issue creation. Same values as FAIL_ON minus "never"; kept separate
+  # because failing a build and filling a tracker have different costs.
+  CREATE_ISSUES: "true"
+  ISSUE_POLICY: "security"
+  ISSUE_LABEL: "audit:securite"
+
+jobs:
+  audit:
+    name: audit (omeka ${{ matrix.omeka }} / php ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { omeka: "4.2.1", php: "8.4" }
+          # Lower bound: uncomment to check the oldest supported runtime.
+          # - { omeka: "4.1.1", php: "8.1" }
+    container:
+      image: git.biblibre.com/omeka-s/omeka-s-ci:${{ matrix.omeka }}-php${{ matrix.php }}
+    steps:
+      # Gitea checks out at the workspace root, where lib/audit.sh needs to
+      # rebuild omeka-s/modules/<Module>. Hence the checkout into _module,
+      # which SRC then points at.
+      - uses: actions/checkout@v4
+        with:
+          path: _module
+
+      - name: Audit
+        env:
+          # Only needed if the tool repository is private. If it is public,
+          # leave this secret undefined. The token goes through .netrc, never
+          # through the URL, where it would show up in the job log.
+          AUDIT_TOKEN: ${{ secrets.AUDIT_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -n "${AUDIT_TOKEN:-}" ]; then
+            host="$(printf '%s' "$AUDIT_REPO" | awk -F/ '{print $3}')"
+            printf 'machine %s\nlogin oauth2\npassword %s\n' "$host" "$AUDIT_TOKEN" \
+              > "$HOME/.netrc"
+            chmod 600 "$HOME/.netrc"
+          fi
+          if ! git clone --depth 1 "$AUDIT_REPO" /tmp/omeka-s-audit 2>/tmp/clone.err; then
+            cat /tmp/clone.err >&2
+            echo "Clone de $AUDIT_REPO impossible. 'could not read Username' signifie" >&2
+            echo "que le depot exige une authentification : soit il est prive, soit il" >&2
+            echo "n'existe pas. Le rendre public, ou definir le secret AUDIT_TOKEN." >&2
+            rm -f "$HOME/.netrc"
+            exit 1
+          fi
+          rm -f "$HOME/.netrc"
+          MODULE="${GITHUB_REPOSITORY##*/}"
+          MODULE="${MODULE#omeka-s-module-}"
+          export MODULE
+          export HARNESS=/tmp/omeka-s-audit
+          export ROOT="$PWD/omeka-s"
+          export SRC="$PWD/_module"
+          export OUT="$PWD/reports"
+          export PHPV="${{ matrix.php }}"
+          export FAIL_ON
+          bash /tmp/omeka-s-audit/lib/audit.sh
+
+      # always(): the audit step exits 2 as soon as it finds something, and
+      # that is exactly the case that should open an issue.
+      # Not on pull requests: a fork token is read-only, and a PR is a
+      # proposal rather than the state of the repository.
+      # Idempotent: an issue already open for the same finding is never
+      # recreated. See lib/report-to-issues.py.
+      - name: Issues
+        if: always() && env.CREATE_ISSUES == 'true' && github.event_name != 'pull_request'
+        env:
+          GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
+        run: |
+          set -euo pipefail
+          python3 /tmp/omeka-s-audit/lib/report-to-issues.py \
+            --reports "$PWD/reports" \
+            --repo "${{ github.repository }}" \
+            --api "${{ github.api_url }}" \
+            --label "$ISSUE_LABEL" \
+            --policy "$ISSUE_POLICY" \
+            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_number }}"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: audit-${{ matrix.omeka }}-php${{ matrix.php }}
+          path: reports/
+          retention-days: 90
