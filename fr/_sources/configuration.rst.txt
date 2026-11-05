@@ -9,6 +9,7 @@ On `module.config.php` file add yours credentials to allow module to access to K
 .. code-block:: php
 
     'koha-import' => [
+        'user-agent' => '',
         'url' => '',
         'client_id' => '',
         'client_secret' => '',
